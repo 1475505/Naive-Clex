@@ -5,7 +5,7 @@ using namespace std;
 
 namespace Lex {
     const std::vector<std::string> token_type = {
-            "Identifier", "Keyword", "Integer", "Float", "Char", "String", "Punctuation", "Preprocess",
+            "Identifier", "Keyword", "Integer", "Float", "Char", "String", "Punctuation", "Comment", "Preprocess",
             "ErrorLex"};
 
     const std::vector<std::string> keywords = {
@@ -41,7 +41,7 @@ namespace Lex {
             else if (token.errorLex == ErrorLex::UNCLOSED_STRING)
                 os << "Unclosed String " << token.literal;
         } else if (token.type == TokenType::KEYWORD)
-            os << "[Value] " << keywords[token.keyword];
+            os << "[Value] " << token.literal;
         else if (token.type == TokenType::INTEGER || token.type == TokenType::FLOAT || token.type == TokenType::CHAR ||
                  token.type == TokenType::STRING || token.type == TokenType::IDENTIFIER)
             os << "[Value] " << token.literal;

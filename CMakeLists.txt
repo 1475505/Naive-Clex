@@ -4,4 +4,4 @@ project(Clex)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(Clex
-        src/main.cpp src/trie.h src/token.h src/token.cpp src/reader.cpp src/reader.h)
+        src/main.cpp src/trie.h src/token.h src/token.cpp src/reader.cpp src/reader.h src/lexer.cpp src/lexer.h)

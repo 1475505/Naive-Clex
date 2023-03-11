@@ -8,69 +8,58 @@
 
 #include <unordered_map>
 #include <string>
+#include "assert.h"
 
 using namespace std;
 
+class TrieNode {
+public:
+    std::unordered_map<char, TrieNode *> children;
+    bool is_end_of_word;
+
+    TrieNode() : is_end_of_word(false) {}
+};
+
 class Trie {
 private:
-    struct TrieNode {
-        bool is_end = false;
-        unordered_map<char, TrieNode*> children;
-    };
-
-    TrieNode* root;
+    TrieNode *root;
 
 public:
     Trie() {
         root = new TrieNode();
     }
 
-    void insert(const string& word) {
-        TrieNode* node = root;
-        for (char c : word) {
-            if (!node->children.count(c)) {
-                node->children[c] = new TrieNode();
+    void insert(const std::string &word) {
+        TrieNode *current = root;
+        for (const auto &ch: word) {
+            if (current->children.find(ch) == current->children.end()) {
+                current->children[ch] = new TrieNode();
             }
-            node = node->children[c];
+            current = current->children[ch];
         }
-        node->is_end = true;
+        current->is_end_of_word = true;
     }
 
-    bool search(const string& word) const {
-        const TrieNode* node = root;
-        for (char c : word) {
-            if (!node->children.count(c)) {
+    bool search(const std::string &word) {
+        TrieNode *current = root;
+        for (const auto &ch: word) {
+            if (current->children.find(ch) == current->children.end()) {
                 return false;
             }
-            node = node->children.at(c);
+            current = current->children[ch];
         }
-        return node->is_end;
+        return current->is_end_of_word;
     }
 
-    bool starts_with(const string& prefix) const {
-        const TrieNode* node = root;
-        for (char c : prefix) {
-            if (!node->children.count(c)) {
+    bool starts_with(const std::string &prefix) {
+        TrieNode *current = root;
+        for (const auto &ch: prefix) {
+            if (current->children.find(ch) == current->children.end()) {
                 return false;
             }
-            node = node->children.at(c);
+            current = current->children[ch];
         }
         return true;
-    }
-
-    ~Trie() {
-        delete_trie(root);
-    }
-
-private:
-    void delete_trie(TrieNode* node) {
-        if (!node) {
-            return;
-        }
-        for (auto& child : node->children) {
-            delete_trie(child.second);
-        }
-        delete node;
     }
 };
 

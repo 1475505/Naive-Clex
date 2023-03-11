@@ -14,18 +14,18 @@ namespace Lex {
 
     /// 记号类型
     enum TokenType {
-        IDENTIFIER,
-        KEYWORD,
+        IDENTIFIER, //标识符
+        KEYWORD, //关键字
         INTEGER,
         FLOAT,
         CHAR,
         STRING,
-        PUNCTUATION,
-        COMMENT,
-        PREPROCESS,
-        ERRORLEX
+        PUNCTUATION, //标点
+        COMMENT, //注释
+        PREPROCESS, //预处理内容
+        ERRORLEX, //错误
+        END_OF_FILE
     };
-
 
     /// 关键字
     extern const std::vector<std::string> keywords;
@@ -92,6 +92,7 @@ namespace Lex {
         UNCLOSED_COMMENT,
         UNCLOSED_CHAR,
         UNCLOSED_STRING,
+        TODO
     };
 
     /// 记号位置类
