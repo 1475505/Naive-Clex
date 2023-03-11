@@ -21,6 +21,7 @@ int main(int argc, char *argv[]) {
     for (const string& s : Lex::keywords) {
         trie.insert(s);
     }
+
     system("pause");
     return 0;
 }
