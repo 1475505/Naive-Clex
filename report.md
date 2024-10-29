@@ -7,9 +7,9 @@
 <img src="http://img.070077.xyz/202204021121013.png" width="50%" />
 </div>
 ---
-<div align=center><font size='40'> 姓名：刘亮</font></div>
-<div align=center><font size='40'>学号：2020211318</font></div>
-<div align=center><font size='70'>班级：2020211322</font></div>
+<div align=center><font size='40'> 姓名：</font></div>
+<div align=center><font size='40'>学号：</font></div>
+<div align=center><font size='70'>班级：</font></div>
 
 ---
 
